@@ -29,6 +29,7 @@ public class MainPageTests extends BaseTest {
     @ParameterizedTest
     @ValueSource(strings = {"Частным лицам", "Бизнесу", "Премиум", "Личный кабинет"})
     @DisplayName("Проверка заголовков в навбаре")
+    @Severity(SeverityLevel.CRITICAL)
     public void checkItemsTitle(String title) {
         step("Открываем главную страницу", mainPage::openPage);
         step("Проверяем что наличие заголовков в навбаре", () -> mainPage.checkNavigationBarItemNames(title));
@@ -37,6 +38,7 @@ public class MainPageTests extends BaseTest {
     @ParameterizedTest()
     @CsvFileSource(resources = "/logins.csv")
     @DisplayName("Проверка доступности и порядка отображения доступных ЛК")
+    @Severity(SeverityLevel.CRITICAL)
     public void checkOrderedLoginList(int index, String title) {
         step("Открываем главную страницу", mainPage::openPage);
         step("Проверяем порядок отображения списка доступных ЛК", () -> mainPage.checkOrdersLoginsList(index, title));
@@ -45,6 +47,7 @@ public class MainPageTests extends BaseTest {
     @ParameterizedTest
     @MethodSource("getLoginsHref")
     @DisplayName("Проверка корректности связок названий ЛК и ссылок")
+    @Severity(SeverityLevel.CRITICAL)
     public void checkLoginHref(String title, String link) {
         step("Открываем главную страницу", mainPage::openPage);
         step("Проверяем корректность ссылок на ЛК", () -> mainPage.checkLoginsHref(title, link));
