@@ -16,7 +16,7 @@ public class MainPage {
             navigationBar = $("[data-test=\"navigation\"]"),
             loginWrapper = $("[data-test=\"loginWrapper\"]");
 
-    String logins = "[title=\"Личный кабинет\"]";
+    String loginTitle = "[title=\"Личный кабинет\"]";
 
     public MainPage openPage() {
         open("https://www.tinkoff.ru/");
@@ -34,13 +34,13 @@ public class MainPage {
     }
 
     public MainPage checkOrdersLoginsList(int index, String title) {
-        ElementsCollection loginsList = loginWrapper.hover().$$(logins);
+        ElementsCollection loginsList = loginWrapper.hover().$$(loginTitle);
         loginsList.get(index).shouldHave(text(title));
         return this;
     }
 
     public MainPage checkLoginsHref(String title, String link) {
-        ElementsCollection loginsList = loginWrapper.hover().$$(logins);
+        ElementsCollection loginsList = loginWrapper.hover().$$(loginTitle);
         loginsList.findBy(text(title)).shouldHave(href(link));
         return this;
     }
