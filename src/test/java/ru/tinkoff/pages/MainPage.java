@@ -4,17 +4,25 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import java.util.List;
+
+import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.href;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
+    CreditCardsPage creditCardsPage = new CreditCardsPage();
 
     SelenideElement
             logo = $("[data-test=\"logo\"]"),
-            navigationBar = $("[data-test=\"navigation\"]"),
-            loginWrapper = $("[data-test=\"loginWrapper\"]");
+            loginWrapper = $("[data-test=\"loginWrapper\"]"),
+            privateClients = $("[data-test=\"menu-item-0-title\"]"),
+            creditCardsDropDownMenu = $("[data-test=\"clickableArea text-item-0-0\"]"),
+            slidesPanel = $("[data-test=\"panel slides\"]"),
+            creditCardsSlidesPanel = slidesPanel.$("[data-schema-path=\"1\"]");
+
+    ElementsCollection navigationBar = $$("[data-item-type=\"menu\"]");
 
     String loginTitle = "[title=\"Личный кабинет\"]";
 
@@ -28,20 +36,30 @@ public class MainPage {
         return this;
     }
 
-    public MainPage checkNavigationBarItemNames(String ItemName) {
-        navigationBar.shouldHave(text(ItemName));
+    public MainPage checkNavigationBarItemNames(List<String> titles) {
+        navigationBar.should(texts(titles));
         return this;
     }
 
-    public MainPage checkOrdersLoginsList(int index, String title) {
-        ElementsCollection loginsList = loginWrapper.hover().$$(loginTitle);
-        loginsList.get(index).shouldHave(text(title));
-        return this;
-    }
 
     public MainPage checkLoginsHref(String title, String link) {
         ElementsCollection loginsList = loginWrapper.hover().$$(loginTitle);
         loginsList.findBy(text(title)).shouldHave(href(link));
         return this;
+    }
+
+    public MainPage openPrivateClientDropDownMenu() {
+        privateClients.hover();
+        return this;
+    }
+
+    public CreditCardsPage clickOnCreditCardsOnDropDownMenu() {
+        creditCardsDropDownMenu.click();
+        return creditCardsPage;
+    }
+
+    public CreditCardsPage clickOnCreditCardsOnSlidesPanel() {
+        creditCardsSlidesPanel.click();
+        return creditCardsPage;
     }
 }

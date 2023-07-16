@@ -12,7 +12,7 @@ public class BaseTest {
     static void setUp() {
         Configuration.pageLoadStrategy = "eager";
         Configuration.browserSize = "1920x1080";
-        Configuration.headless = true;
+        //Configuration.headless = true;
     }
 
     @AfterEach
