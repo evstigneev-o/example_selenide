@@ -30,7 +30,7 @@ public class BaseTest {
                 "enableVNC", true,
                 "enableVideo", true
         ));
-        //Configuration.browserCapabilities = capabilities;
+        Configuration.browserCapabilities = capabilities;
     }
 
     @AfterEach

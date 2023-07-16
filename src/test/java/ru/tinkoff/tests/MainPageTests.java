@@ -31,7 +31,7 @@ public class MainPageTests extends BaseTest {
     @DisplayName("Проверка заголовков в навбаре")
     @Severity(SeverityLevel.CRITICAL)
     public void checkItemsTitle() {
-        List<String> titles = List.of("Частным лицам", "Бизнесу", "Премиум");
+        List<String> titles = List.of("Частным лицам", "Бизнесу", "Премиум", "Еще");
         step("Открываем главную страницу", mainPage::openPage);
         step("Проверяем наличие заголовков в навбаре", () -> mainPage.checkNavigationBarItemNames(titles));
 
