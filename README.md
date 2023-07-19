@@ -26,9 +26,10 @@
 <img width="5%" title="Jira" src="media/logo/Jira.svg">
 </p>
 
-Тесты написаны на языке <code>Java</code> с использованием фреймворка для тестирования [Selenide](https://selenide.org/), сборка - <code>Gradle</code>. Фреймворк тестирования - <code>JUnit 5</code>.
+Тесты написаны на языке <code>Java 17</code> с использованием фреймворков <code>JUnit 5</code> и [Selenide](https://selenide.org/), сборка - <code>Gradle</code>.
 Для запуска браузеров используется [Selenoid](https://aerokube.com/selenoid/).
-Для удаленного запуска используется джоба в <code>Jenkins</code> с формированием Allure-отчета и отправкой результатов в <code>Telegram</code> при помощи бота и использования библиотеки [allure-notifications](https://github.com/qa-guru/allure-notifications). Настроена интеграция с <code>Allure TestOps</code> и <code>Jira</code>.
+Для удаленного запуска используется джоба в <code>Jenkins</code> с формированием Allure-отчета и отправкой результатов в <code>Telegram</code> при помощи бота с использованием библиотеки [allure-notifications](https://github.com/qa-guru/allure-notifications). 
+Настроена интеграция с <code>Allure TestOps</code> и <code>Jira</code>.
 
 Allure-отчета содержит:
 * Шаги теста;
@@ -48,10 +49,18 @@ gradle clean test
 
 ## <img width="4%" style="vertical-align:middle" title="Jenkins" src="media/logo/Jenkins.svg"> Сборка в Jenkins
 
-Для запуска сборки необходимо перейти в раздел <code>Собрать с параметрами</code> и нажать кнопку <code>Собрать</code>.
+Для запуска [сборки](https://jenkins.autotests.cloud/job/o.evstigneev_tinkoff_tests/) необходимо перейти в раздел <code>Собрать с параметрами</code>, указать нужные параметры и нажать кнопку <code>Собрать</code>.
 <p align="center">
 <img title="Jenkins Build" src="media/screens/job.png">
 </p>
+Параметры сборки в Jenkins:
+
+- *browser (браузер, по умолчанию chrome)*
+- *browserVersion (версия браузера, по умолчанию 100.0)*
+- *browserSize (размер окна браузера, по умолчанию 1920x1080)*
+- *baseUrl (адрес сайта)*
+- *selenoid (логин, пароль и адрес удаленного сервера Selenoid)*
+
 После выполнения сборки, в блоке <code>История сборок</code> напротив номера сборки появятся значки <code>Allure Report</code> и <code>Allure TestOps</code>, при клике на которые откроется страница с сформированным html-отчетом и тестовой документацией соответственно.
 
 ## <img width="4%" style="vertical-align:middle" title="Allure Report" src="media/logo/Allure_Report.svg"> Пример Allure-отчета
@@ -91,7 +100,7 @@ gradle clean test
 
 ### <img width="4%" style="vertical-align:middle" title="Selenoid" src="media/logo/Selenoid.svg"> Видео примера запуска тестов в Selenoid
 
-В отчетах Allure для каждого теста прикреплен скриншот, видео прохождения теста
+В отчетах Allure для каждого теста прикреплен скриншот последнего шага и видео прохождения теста
 <p align="center">
   <img title="Selenoid Video" src="media/screens/selenoid.gif">
 </p>
