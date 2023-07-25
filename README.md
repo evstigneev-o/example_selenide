@@ -41,11 +41,11 @@ Allure-отчета содержит:
 ## :arrow_forward: Запуск автотестов
 
 ### Запуск тестов из терминала
-Локальный запуск
+Локальный запуск:
 ```
 gradle clean test -Denv=local
 ```
-При выполнении данной команды в терминале IDE тесты запустятся удаленно в <code>Selenoid</code> на браузере <code>Chrome</code> версии <code>100.0</code> с разрешением <code>1920х1080</code>.
+При выполнении данной команды в терминале IDE тесты запустятся удаленно в <code>Selenoid</code> на браузере <code>Chrome</code> версии <code>100.0</code> с разрешением <code>1920х1080</code>:
 ```
 gradle clean test -Denv=remote
 ```
