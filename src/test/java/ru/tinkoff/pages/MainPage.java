@@ -27,7 +27,7 @@ public class MainPage {
     String loginTitle = "[title=\"Личный кабинет\"]";
 
     public MainPage openPage() {
-        open("https://www.tinkoff.ru/");
+        open("");
         return this;
     }
 

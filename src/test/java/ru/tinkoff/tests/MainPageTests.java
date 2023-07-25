@@ -49,7 +49,7 @@ public class MainPageTests extends BaseTest {
     @Test
     @DisplayName("Переход на страницу кредитных карт через выпадающее меню навбара")
     @Severity(SeverityLevel.CRITICAL)
-	public void checkOpenCreditCardsPageByNavigationBar(){
+    public void checkOpenCreditCardsPageByNavigationBar() {
         step("Открываем главную страницу", mainPage::openPage);
         step("Открываем выпадающее меню Частным лицам", () -> mainPage.openPrivateClientDropDownMenu());
         step("Выбираем Кредитные карты в выпадающем списке навбара Частным клиентам", () -> mainPage.clickOnCreditCardsOnDropDownMenu());
@@ -59,11 +59,12 @@ public class MainPageTests extends BaseTest {
     @Test
     @DisplayName("Переход на страницу кредитных карт через слайд панель")
     @Severity(SeverityLevel.CRITICAL)
-	public void checkOpenCreditCardsPageBySlidesPanel(){
+    public void checkOpenCreditCardsPageBySlidesPanel() {
         step("Открываем главную страницу", mainPage::openPage);
         step("Выбираем Кредитные карты в слайд панели", () -> mainPage.clickOnCreditCardsOnSlidesPanel());
         step("Проверяем что открылась страница Кредитные карты", () -> creditCardsPage.pageShouldBeOpen());
     }
+
     static Stream<Arguments> getLoginsHref() {
         return Stream.of(
                 Arguments.of("Интернет-банк", "/login/"),
